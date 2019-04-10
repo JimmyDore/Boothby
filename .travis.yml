@@ -7,11 +7,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_05abbbf0eab4_key -iv $encrypted_05abbbf0eab4_iv
   -in deploy_rsa.enc -out deploy_rsa -d
 after_success:
-- eval "$(ssh-agent -s)"
-#- chmod 600 .travis/deploy_key.pem
-#- ssh-add .travis/deploy_key.pem
-- git remote add production ec2-user@ec2-35-180-135-203.eu-west-3.compute.amazonaws.com:project.git
-- git push production
+  - ./deploy.sh
 env:
   global:
     secure: 3ibFErFRJ0PDz+dzFCgxYBkxMw42i06RghVXr4irQYtj9BCFhSZ9kLhnFXKfPCLoAu8BYdG7SvXHG63XYU9yJniIJ7YiX7WVn/iJO7n8r79c4xHp6KRUvOhZrnD4mebnkPmc5dfJT9b0bR6B4fYhqIBkxF7avFoVqZyHuAFaWNWK4r6sv5r7auQC/Iq4v3zWW8txUm6bVEVqP/1WSqnUHjqqWmwTgb7IW0WE/sY382RgbIqRxt124EuUUt7AWjIvxPn0fICgJpcZsmldAm7kt2c+QccWQmKcfXvgHSogg6R/Ibb7wpaD6JAtpPwjupGtqrxKrtqTlW18aJoQIydkq1V0ffgfCT7Y4Jhv0HKYliNstpwM0A63hdhSh5jl5xAs5WWABOscY3iJT13LUaUAN289+D0dSHOvmP48GHLyfR2Gm6ZRZbeWQWdHcjnD0JrHNeSHa8AxW1qwOSSbSrbMs6hECmqKhddU48rIiQNtsc+mclCc/z6GE6T8TIoeyGehARCool6790GaHzonp69xE3QvzCWszFjZP92sCvZG/BGPUcvOOO34tzCQ+eArYHT3moSEspDlkdh8hZBo6fAeL0546HLc8vIJojgIfr+XL6xrQxUaufFrTNktM4GRSBUpGGgHkDvfUZEuHsYQ9Oy0jJhF7CrgOLXXpCWpKmd7pWs=
